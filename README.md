@@ -1,12 +1,3 @@
-# Create an awesome 3d Landing Page for iphone in React JS
-
-<!-- 
-
-
-This repository contains starter code for Apple iphone 3d landing page in ReactJS. <br />
-
-View Demo👇: <br />
-https://apple-iphone14.netlify.app/ <br />
 
 
 
