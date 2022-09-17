@@ -1,10 +1,11 @@
 import gsap from 'gsap';
-import React, { Suspense, useLayoutEffect, useRef } from 'react'
+import React, { Suspense, useContext, useEffect, useLayoutEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { useGLTF } from "@react-three/drei";
 import { Canvas } from '@react-three/fiber';
 import { Model2 } from '../components/Scene2';
 import { OrbitControls, Environment } from "@react-three/drei";
+import { ColorContext } from '../context/ColorContext';
 const Section = styled.section`
 width: 100vw;
 height: 100vh;
@@ -51,19 +52,34 @@ const ColorSection = () => {
     const leftRef = useRef(null);
     const textRef = useRef(null);
 
-  const {  materials } = useGLTF("/scene.gltf");
+
+  
+  const { currentColor, changeColorContext } = useContext(ColorContext);
+  useEffect(() => {
+      let rightElem = rightRef.current;
+      let leftElem = leftRef.current;
+      let textElem = textRef.current;
+
+    textElem.innerText = currentColor.text;
+    textElem.style.color = currentColor.color;
+    rightElem.style.backgroundColor = `rgba(${currentColor.rgbColor}, 0.4)`;
+    leftElem.style.backgroundColor = `rgba(${currentColor.rgbColor}, 0.8)`;
+  }, [currentColor]);
 useLayoutEffect(() => {
   let Elem = sectionRef.current;
-  let rightElem = rightRef.current;
-  let leftElem = leftRef.current;
-  let textElem = textRef.current;
+
 
   let updateColor = (color, text, rgbColor) => {
-    materials.Body.color.set(color);
-    textElem.innerText = text;
-    textElem.style.color = color;
-    rightElem.style.backgroundColor = `rgba(${rgbColor}, 0.4)`
-    leftElem.style.backgroundColor = `rgba(${rgbColor}, 0.8)`;
+       const colorObj = {
+         color,
+         text,
+         rgbColor,
+       };
+       changeColorContext(colorObj);
+
+
+
+
 }
 
 gsap.to(Elem, {
