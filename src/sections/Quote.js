@@ -41,7 +41,7 @@ const Text = styled.p`
     animation-duration: 2.5s;
     animation-timing-function: ease;
     animation-fill-mode: forwards;
-    animation-delay: ${props => props.delay};
+    animation-delay: ${(props) => props.delay};
     font-family: var(--fontL);
     background-image: linear-gradient(-45deg, var(--gradient));
     background-clip: text;
@@ -52,6 +52,24 @@ const Text = styled.p`
     width: 100%;
     text-align: end;
     background-image: linear-gradient(-180deg, var(--gradient));
+    font-family: var(--fontR);
+  }
+
+  @media screen and (max-width: 70em) {
+    width: 70%;
+  }
+
+  @media screen and (max-width: 48em) {
+    font-size: var(--fontmd);
+    height: var(--fontsm);
+  }
+
+  @media screen and (max-width: 70em) {
+    width: 90%;
+  }
+
+  @media screen and (max-width: 70em) {
+    font-size: var(--fontxs);
   }
 `;
 const Quote = () => {

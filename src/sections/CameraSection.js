@@ -32,6 +32,11 @@ const V2 = styled.video`
   height: auto;
 
   z-index: 1;
+  @media screen and (max-width: 30em) {
+   width: 100%;
+   right: 0;
+  top: 10%;
+  }
 `;
 
 const TitleContainer = styled.div`
@@ -50,11 +55,30 @@ const TitleContainer = styled.div`
   & > *:nth-child(3) {
     margin-left: 12rem;
   }
+  @media screen and (max-width: 48em) {
+    right: 2rem;
+    top: 60%;
+  }
+  @media screen and (max-width: 40em) {
+    right: 5rem;
+
+  }
+  @media screen and (max-width: 30em) {
+    right: 40%;
+    top: 70%;
+  }
 `;
 const Title = styled.h1`
-font-size: var(--fontBig);
-z-index: 5;
-text-transform: capitalize;
+  font-size: var(--fontBig);
+  z-index: 5;
+  text-transform: capitalize;
+
+  @media screen and (max-width: 70em) {
+    font-size: var(--fontxxxl);
+  }
+  @media screen and (max-width: 48em) {
+    font-size: var(--fontxxl);
+  }
 `;
 const CameraSection = () => {
     const sectionRef = useRef(null)
